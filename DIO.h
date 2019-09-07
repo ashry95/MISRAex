@@ -10,7 +10,6 @@
 #define DIO_H_
 
 #include "Basic_Types.h"
-#include "Basic_Types.h"
 
 
 #define PA 0x00
