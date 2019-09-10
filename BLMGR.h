@@ -13,8 +13,8 @@
 #define MSTER_COMM 0x01
 #define COMM_CINFIG 0x01
 
-#define ROLE_CAP  0x03
-#define ROLE_MAPP 0x01
+#define ROLE_CAP  0x03u
+#define ROLE_MAPP 0x01u
 
 #define DEVICE_ROLE 0x02u
 

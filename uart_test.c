@@ -7,27 +7,32 @@
 
 #include "PWM.h"
 #include "GPT.h"
+
+void Cyclic30ms(void);
+void sei(void);
+void _delay_ms(u16 delay);
+void main(void);
+
 void Cyclic30ms(void)
 {
-	static u8 TimeoutCounter = 0;
+	static u8 TimeoutCounter = 0u;
 	TimeoutCounter ++;
-	if(TimeoutCounter == 10)
+	if(TimeoutCounter == 10u)
 	{
 		BLMGR_BluetoothStateMachine();
-		TimeoutCounter = 0;
-		
+		TimeoutCounter = 0u;
 		
 	}
 }
-int main(void)
+void main(void)
 {
-	int Count= 0;
-	int start = 0;
-	int Count2 = 0;
+	u16 Count= 0u;
+	u16 start = 0u;
+	u16 Count2 = 0u;
  
 
 
-GPT_Timer30msInit(Cyclic30ms);
+GPT_Timer30msInit(&Cyclic30ms);
 	
 	BLMGR_BluetoothInit();
 	BLMGR_SetReceiver(ROLE_MAPP);
@@ -35,31 +40,25 @@ GPT_Timer30msInit(Cyclic30ms);
 							
 	PWM_Init();
 	sei();
-	PWM_SetSpeed(25);
+	PWM_SetSpeed(25u);
 
 	
 	while(1)
 	{
-		Count2 = (Count2 +1) %20;
-		BLMGR_SetBattLevel(Count2 / 4);
+		Count2 = (Count2 +1u) %20u;
+		BLMGR_SetBattLevel((u8)(Count2 / 4u));
 		
-		_delay_ms(100);
+		_delay_ms(100u);
 		Count ++;
-		if(start == 0)
+		if(start == 0u)
 		{
-					if(Count > 5)
+					if(Count > 5u)
 					{
 						BLMGR_StartDevice();
 
-						start = 1;
+						start = 1u;
 					}
-					
 		}
 
-	    
-		
-		
 	}
-	
-	
 }
