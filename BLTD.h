@@ -14,7 +14,7 @@
 #define BLTD_RESP_STATUS_NON 0x02u
 typedef void (*CbkPfnType)(void);
 extern void BLTD_SendInitCmd(void);
-extern u8 BLTD_CheckForResponse(const u8 * const Response,u16 RespLength);
+extern u8 BLTD_CheckForResponse( u8 const Response[],u16 RespLength);
 extern void BLTD_SendInquireCmd(void);
 extern void BLTD_SendMessage(const u8* const Message,u16 MsgLength);
 extern void BLTD_StartWaitPairing(void);

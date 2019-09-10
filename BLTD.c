@@ -26,7 +26,7 @@ void BLTD_SendInquireCmd(void)
 	UART_StartReception(RxBuffer,4u,&RxcCallBackFun);
 	BTCommandSend((u8*)"+INQ",4u);
 }
-u8 BLTD_CheckForResponse(const u8 * const Response,u16 RespLength)
+u8 BLTD_CheckForResponse( u8 const Response[],u16 RespLength)
 {
 	u8 RespStatus;
 	u8 IsEqual;
@@ -123,6 +123,7 @@ void BLTD_SenTestCmd(void)
 /***************************************************************************************************************/
 static void BTCommandSend(const u8* const Command,u16 CommandLength)
 	{
+
     static char BTCommandBuffer[100];
 		BTCommandBuffer[0u] = 'A';
 		BTCommandBuffer[1u] = 'T';
