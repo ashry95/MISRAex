@@ -27,7 +27,7 @@ void BLTD_SendInquireCmd(void)
 	UART_StartReception(RxBuffer,4,RxcCallBackFun);
 	BTCommandSend((u8*)"+INQ",4);
 }
-u8 BLTD_CheckForResponse(u8* Response,u16 RespLength)
+u8 BLTD_CheckForResponse(char * Response,u16 RespLength)
 {
 	u8 RespStatus;
 	u8 IsEqual;
